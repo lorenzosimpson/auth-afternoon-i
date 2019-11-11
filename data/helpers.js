@@ -10,7 +10,15 @@ function addUser(user) {
     .insert(user)
 }
 
+function findUser(username) {
+    return db('users')
+    .select('*')
+    .where('username', username)
+}
+
+
 module.exports = {
     find,
-    addUser
+    addUser,
+    findUser
 };
