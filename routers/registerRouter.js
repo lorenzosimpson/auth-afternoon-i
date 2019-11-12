@@ -8,7 +8,10 @@ router.post('/', (req, res) => {
         user.password = hashedPw;
 
         Users.addUser(user)
-        .then(added => res.status(200).json({ message: `Welcome, ${user.username}`}))
+        .then(added => {
+            req.session.username = user.username;
+            res.status(200).json({ message: `Welcome, ${user.username}`})
+        })
         .catch(err => res.status(500).json({ error: 'An error occurred' }))
     })
 
