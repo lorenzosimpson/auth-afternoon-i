@@ -2,8 +2,9 @@ const db = require('./db-config.js')
 
 
 function find() {
-    return db('users').select('*')
+    return db('users').select('id', 'username').orderBy('id')
 }
+
 
 function addUser(user) {
     return db('users')
@@ -20,5 +21,5 @@ function findUser(username) {
 module.exports = {
     find,
     addUser,
-    findUser
+    findUser,
 };
